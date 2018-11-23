@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Roses</title>
+    <link href="https://fonts.googleapis.com/css?family=Abril+Fatface" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR:300,400,700,900" rel="stylesheet">
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="./css/nav.css" rel="stylesheet">
+    <link href="./css/footer.css" rel="stylesheet">
+    <link href="./css/header.css" rel="stylesheet">
+    <style media="screen">
+      * {margin:0; padding:0; font-family: 'Noto Sans KR', sans-serif;}
+      body {overflow: hidden;}
+      span {display: block;}
+      section {width:100vw; height:100vh; float:left; position:relative; overflow: hidden;}
+      section .circle {width:15vw; height:15vw; z-index: 98; cursor: pointer;
+                       position: absolute; right:0; top:50%;
+                       transform:translate(50%,-50%); border-radius: 50%;
+                       box-shadow: 0 0 10px #353535;}
+      section .circle i {color:white; font-size: 5vw; margin-left: 30%; line-height: 300%;}
+
+      section .solid {width:inherit; height: inherit;
+                      position: absolute; top:0; left:0; z-index: 2;
+                      background-size: cover; }
+      section img {position:absolute; top:0; right:0; z-index: 0; width:50vw; opacity: 1;}
+      section .contain {position: relative; left:0; top:0;
+                         width:50vw; height:100vh;}
+      section .contain .textwrap {position: absolute; top:50%; left:12%;
+                                  transform: translate(0%,-50%);
+                                  color:white;}
+      section .contain .textwrap h2 {font-size: 5vw; font-weight: 900; overflow: hidden;}
+      section .contain .textwrap h2 span {position: relative; top:400px; display: block;}
+      section .contain .textwrap h3 {font-size: 2vw; width:0; height:0; border-top:2px solid white; overflow:hidden;}
+      section .contain .textwrap h3 span {position:relative; top:-400px; display: block;}
+      section .contain .textwrap h5 {font-size: 1vw; letter-spacing: .5vw; opacity: 0;}
+
+      .sec1 {background: #d11e24;}
+      .sec1 .circle {background: #d13c1e;}
+      .sec1 .solid {background: url("./img/petal3.png") no-repeat 50% 50%;
+                    background-attachment: fixed;}
+      .sec2 {background: #d13c1e;}
+      .sec2 .circle {background: #ffde28;}
+      .sec2 .solid {background: url("./img/petal4.png") no-repeat 50% 50%;
+                    background-attachment: fixed;}
+      .sec3 {background: #ffde28;}
+      .sec3 .circle {background: #ff4cd9;}
+      .sec3 .solid {background: url("./img/petal6.png") no-repeat 50% 50%;
+                    background-attachment: fixed;}
+      .sec4 {background: #ff4cd9;}
+      .sec4 .circle {background: #b628ff;}
+      .sec4 .solid {background: url("./img/petal5.png") no-repeat 50% 50%;
+                    background-attachment: fixed;}
+      .sec5 {background: #b628ff;}
+      .sec5 .circle {background: #286aff;}
+      .sec5 .solid {background: url("./img/petal7.png") no-repeat 50% 50%;
+                    background-attachment: fixed;}
+      .sec6 {background: #286aff;}
+      .sec6 .circle {background: white; top:100%; left:50%;
+                     transform: translate(-50%,-50%); text-align: center;}
+      .sec6 .circle i {color:#353535; font-size: 5vw; line-height: 180%; margin-left: 0;}
+      .sec6 .solid {background: url("./img/petal8.png") no-repeat 50% 50%;
+                    background-attachment: fixed;}
+      .sec7 {float:right;}
+      .sec7::after {content:" "; display: block; clear: both;}
+
+      .sec7 img {position: absolute; top:50%; left:50%;
+                 transform: translate(-50%,-50%); width:30vw;
+                 animation: r 20s linear infinite alternate;}
+                 @keyframes r {
+                   0% {transform: translate(-50%,-50%) rotateZ(-30deg);}
+                   100% {transform: translate(-50%,-50%) rotateZ(30deg);}
+                 }
+    </style>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.2.4.js"></script>
+    <script type="text/javascript">
+      <!--
+        window.onload = function(){
+          setTimeout(function(){
+            scrollTo(0,0);
+          },100)
+        }
+        $(document).ready(function(){
+          var hh = $("header").height();
+          var hw = $("header").width();
+          var i = 0;
+          function n(num,wit){
+            if(i==num){
+              $(`.sec${num} h3`).delay(200).animate({"width":`${wit}vw`},function(){
+                $(`.sec${num} h3 span`).animate({"top":"0"});
+              });
+              $(`.sec${num} h3`).delay(100).animate({"height":"11vh"});
+              $(`.sec${num} h2 span`).delay(400).animate({"top":"0"});
+              $(`.sec${num} h5`).delay(400).animate({"opacity":1});
+            }
+          };
+
+          $(window).on("mousewheel click",function(e){
+            var ar = [20,20,17.5,26,24.7,21.65];
+            var delta = e.originalEvent.deltaY;
+            console.log($(".arrow")[0]);
+            if(e.type=="click" && e.target == $(".circle")[0]){
+              i=1;
+              $("html").stop().animate({scrollTop:hh});
+              $(`.sec1 h3`).delay(200).animate({"width":`20vw`},function(){
+                $(`.sec1 h3 span`).animate({"top":"0"});
+              });
+              $(`.sec1 h3`).delay(100).animate({"height":"11vh"});
+              $(`.sec1 h2 span`).delay(400).animate({"top":"0"});
+              $(`.sec1 h5`).delay(400).animate({"opacity":1});
+            }
+            if(e.type=="click" && e.target == $(".circle")[6]){
+              i=7;
+              $("html").stop().animate({scrollTop:2*hh});
+              $("footer").css({"color":"black"});
+              $("nav").css({"color":"black"});
+            }
+
+            function m(b,wit){
+              if(e.type=="click" && e.target == $(".circle")[b]){
+                i=b+1;
+                $("html").stop().animate({scrollLeft:b*hw});
+                $(`.sec${i} h3`).delay(200).animate({"width":`${wit}vw`},function(){
+                  $(`.sec${i} h3 span`).animate({"top":"0"});
+                });
+                $(`.sec${i} h3`).delay(100).animate({"height":"11vh"});
+                $(`.sec${i} h2 span`).delay(400).animate({"top":"0"});
+                $(`.sec${i} h5`).delay(400).animate({"opacity":1});
+              }
+            }
+            for(var u = 1;u<6;u++){
+              m(u,ar[u]);
+            }
+
+            if(delta>0){
+              if($("html,body").is(":animated")){
+                return;
+              }else{
+                i++;
+                if(i>7) i=7;
+                if(i==1){
+                  $("html").stop().animate({scrollTop:hh});
+                }
+                if(i>1){
+                  $("html").stop().animate({scrollLeft:hw*(i-1)});
+                }
+                if(i==7){
+                  $("html").stop().animate({scrollTop:2*hh});
+                  $("footer").css({"color":"black"});
+                  $("nav").css({"color":"black"});
+                }
+                for(var o=1;o<7;o++){
+                  n(o,ar[o-1]);
+                };
+
+              }
+            }else if(delta<0){
+              if($("html,body").is(":animated")){
+                return;
+              }else{
+                i--;
+                if(i<0)i=0;
+                if(i<6){
+                  $("html").stop().animate({scrollLeft:hw*(i-1)});
+                }if(i==6){
+                  $("html").stop().animate({scrollTop:hh});
+                  $("footer").css({"color":"white"});
+                  $("nav").css({"color":"white"});
+                }
+                if(i==0){
+                  $("html").stop().animate({scrollTop:0});
+                  $("h3").css({"width":"0"});
+                  $("h3").css({"height":"0"});
+                  $("h2 span").animate({"top":"200"},1);
+                  $("h3 span").css({"top":"200"});
+                  $("section h5").css({"opacity":0});
+                }
+              }
+            }
+          })
+        })
+      //-->
+    </script>
+  </head>
+  <body>
+    <nav>
+      <i class="fa fa-bars">&nbsp;&nbsp;&nbsp;NAVIGATION</i>
+      <div class="logo">ROSES</div>
+    </nav>
+    <header>
+      <h1>BEAUTIFUL MEANING OF THE ROSES</h1>
+      <div class="circle">
+        <i class="fa fa-angle-double-down arrow"></i>
+      </div>
+    </header>
+    <section class="sec1">
+      <div class="circle">
+        <i class="fa fa-angle-double-right arrow"></i>
+      </div>
+      <div class="solid"></div>
+        <div class="contain">
+          <div class="textwrap">
+            <h5>#01</h5>
+            <h2><span>Red</span></h2>
+            <h3><span>Love and Romance</span></h3>
+          </div>
+        </div>
+    </section>
+    <section class="sec2">
+      <div class="circle">
+        <i class="fa fa-angle-double-right arrow"></i>
+      </div>
+      <div class="solid"></div>
+      <div class="contain">
+        <div class="textwrap">
+          <h5>#02</h5>
+          <h2><span>Orange</span></h2>
+          <h3><span>"I am proud of you"</span></h3>
+        </div>
+      </div>
+    </section>
+    <section class="sec3">
+      <div class="circle">
+        <i class="fa fa-angle-double-right arrow"></i>
+      </div>
+      <div class="solid"></div>
+      <div class="contain">
+        <div class="textwrap" style="color:#353535;">
+          <h5>#03</h5>
+          <h2><span>Yellow</span></h2>
+          <h3 style="border-top:2px solid #353535"></span>Joyful Friendship<span></h3>
+        </div>
+      </div>
+    </section>
+    <section class="sec4">
+      <div class="circle">
+        <i class="fa fa-angle-double-right arrow"></i>
+      </div>
+      <div class="solid"></div>
+      <div class="contain">
+        <div class="textwrap">
+          <h5>#04</h5>
+          <h2><span>Pink</span></h2>
+          <h3><span>Happiness & Appreciation</span></h3>
+        </div>
+      </div>
+    </section>
+    <section class="sec5">
+      <div class="circle">
+        <i class="fa fa-angle-double-right arrow"></i>
+      </div>
+      <div class="solid"></div>
+      <div class="contain">
+        <div class="textwrap">
+          <h5>#05</h5>
+          <h2><span>Purple</span></h2>
+          <h3><span>Falling Love at first Sight</span></h3>
+        </div>
+      </div>
+    </section>
+    <section class="sec6">
+      <div class="circle">
+        <i class="fa fa-angle-double-down arrow"></i>
+      </div>
+      <div class="solid"></div>
+      <div class="contain">
+        <div class="textwrap">
+          <h5>#06</h5>
+          <h2><span>Blue</span></h2>
+          <h3><span>Imposible and Miracle</span></h3>
+        </div>
+      </div>
+    </section>
+    <section class="sec7">
+      <img src="./img/0.png">
+    </section>
+    <footer>
+      <h5 class="copyright"><i class="fa">COPYRIGHT 2018 ⓒ Made by Sang</i></h5>
+      <h4><i class="fa">beautiful meaning of the roses</i></h4>
+    </footer>
+    <script>
+      var body = document.body;
+      var section = document.querySelectorAll("section");
+      body.style.width = 600+"vw";
+    </script>
+  </body>
+</html>

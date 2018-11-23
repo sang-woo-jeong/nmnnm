@@ -1,0 +1,6 @@
+nav {position: fixed; height:5vh; width:100%; top:3%; z-index: 99;
+       font-size:.9vw; color:white;}
+nav i {position: absolute; left:3%; margin-top: .8%; letter-spacing: .3vw;}
+nav .logo {position: absolute; left:50%;
+            transform:translate(-50%); font-weight: 100;
+            letter-spacing: 20px; font-size:2vw;}
